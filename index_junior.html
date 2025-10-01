@@ -387,7 +387,7 @@
                 }
             }
             </script>
-<body>
+<body oncontextmenu="return false">
     <nav>
         <div class="nav-container">
             <ul class="nav-links">
@@ -396,11 +396,11 @@
                 <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
                 <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
                 <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
-                <li><a href="logout.php"><i class="fas fa-cogs"></i> Sign Out</a></li>
+                <li><a href="index.html"><i class="fas fa-cogs"></i> Sign Out</a></li>
             </ul>
             <div>
                 <button class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon">☀️</i>
+                    <i class="fas fa-moon">Mode</i>
                 </button>
             </div>
         </div>
@@ -418,10 +418,10 @@
         <div class="welcome-message">
               <div id="student-info">
                  
-                  <img id="userImage" width="50"  height="50"  ><br><br>
+                  <center><img id="userImage" width="50"  height="50"  ></center><br><br>
             </div >
                
-                <h2>Welcome, <span id="user"></span></h2>
+                <center><h2>WELCOME: <span id="user"></span></h2></center>
         </div>
 
 
@@ -487,11 +487,11 @@
                                    
                                              <div class="form-group"> 
                                                        
-                                                         
+                                                          <div class="input-group">
                    
-                                                        <label>Enter Password:</label>
+                                                        <label style="color: red; font-size: 18px; font-weight: 20px;">Enter Password:</label>
                                                         <input type="password" id="examPassword"><br><br>
-                                                        </select><br><br>
+                                                        </select><br><br></div>
                                                     </div>
                                                    
                     
@@ -517,53 +517,106 @@
 document.getElementById('user').innerText = sessionStorage.getItem('username');
 document.getElementById('userImage').src = sessionStorage.getItem('image');
 
+
 function startExam() {
-    const cls = document.getElementById('classSelect').value;
-    const sub = document.getElementById('subjectSelect').value;
-    const type = document.getElementById('typeSelect').value;
-    const pass = document.getElementById('examPassword').value;
+  const cls = document.getElementById('classSelect').value.toLowerCase();
+  const sub = document.getElementById('subjectSelect').value.toLowerCase();
+  const type = document.getElementById('typeSelect').value.toLowerCase();
+  const pass = document.getElementById('examPassword').value;
 
-    const correctPass = `${cls}_${sub.substring(0,4)}123`; // example: jss1_math123
+  const username = sessionStorage.getItem("username"); // stored after login
+  if (!username) {
+    alert("User not logged in.");
+    return;
+  }
 
-    if(pass.toLowerCase() === correctPass.toLowerCase()) {
-        sessionStorage.setItem('class', cls);
-        sessionStorage.setItem('subject', sub);
-        sessionStorage.setItem('type', type);
-        window.location.href = 'exams.html';
-    } else {
-        alert('Incorrect password for selected class/subject/type.');
-    }
+  // Build dynamic exam attempt file, e.g. "jss1_exam_attempt.json"
+  const attemptFile = `${cls}_exam_attempt.json`;
+
+  // Step 1: Check exam attempt JSON dynamically
+  fetch(attemptFile)
+    .then(res => {
+      if (!res.ok) throw new Error(`${attemptFile} not found`);
+      return res.json();
+    })
+    .then(attemptData => {
+      const attempts = attemptData[`${cls}_exam_attempt`] || [];
+      const userAttempt = attempts.find(u => u.username.toLowerCase() === username.toLowerCase());
+
+      if (userAttempt && userAttempt[sub] === 1) {
+        // User already attempted this subject
+        window.location.href = "attempt_page.html";
+        return Promise.reject("Already attempted"); // stop further execution
+      }
+
+      // Step 2: If not attempted, check password file dynamically
+      const fileName = `${cls}_exam_passwords.json`;
+      return fetch(fileName);
+    })
+    .then(res => {
+      if (!res) return; // means already redirected
+      if (!res.ok) throw new Error("Password file not found");
+      return res.json();
+    })
+    .then(data => {
+      if (!data) return; // means already redirected
+
+      if (data[sub] && pass === data[sub]) {
+        // Save session info
+        sessionStorage.setItem("class", cls);
+        sessionStorage.setItem("subject", sub);
+        sessionStorage.setItem("type", type);
+
+        // Redirect
+        if (type === "theory") {
+          window.location.href = "theory_exam.html";
+        } else {
+          window.location.href = "objectives_exam.html";
+        }
+      } else {
+        alert("Incorrect password for selected class/subject/type.");
+      }
+    })
+    .catch(err => {
+      if (err !== "Already attempted") {
+        console.error("Error:", err);
+        alert("Error loading exam configuration.");
+      }
+    });
 }
-   // Theme toggle functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-       
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-theme');
-           
-            if (document.body.classList.contains('dark-theme')) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
-        });
-       
-        // Simple animation for buttons
-        const buttons = document.querySelectorAll('.btn');
-        buttons.forEach(button => {
-            button.addEventListener('mouseenter', () => {
-                button.style.transform = 'translateY(-2px)';
-                button.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
-            });
-           
-            button.addEventListener('mouseleave', () => {
-                button.style.transform = 'translateY(0)';
-                button.style.boxShadow = 'none';
-            });
-        });
-    
+
+
+
+// Theme toggle functionality
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = themeToggle.querySelector('i');
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+   
+    if (document.body.classList.contains('dark-theme')) {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    }
+});
+
+// Simple animation for buttons
+const buttons = document.querySelectorAll('.btn');
+buttons.forEach(button => {
+    button.addEventListener('mouseenter', () => {
+        button.style.transform = 'translateY(-2px)';
+        button.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+    });
+   
+    button.addEventListener('mouseleave', () => {
+        button.style.transform = 'translateY(0)';
+        button.style.boxShadow = 'none';
+    });
+});
 </script>
+
 </body>
 </html>
