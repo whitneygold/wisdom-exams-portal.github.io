@@ -1,0 +1,80 @@
+<svg width="900" height="550" viewBox="0 0 900 550" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="900" height="550" fill="#f1f1f1"/>
+  <rect x="10" y="10" width="880" height="530" fill="none" stroke="#4a6fa5" stroke-width="12"/>
+
+  <!-- Crest Shield (Bolder) -->
+  <path d="M60,90 
+           L210,90 
+           L210,230 
+           Q135,300 60,230 Z"
+        fill="#6f1428" stroke="white" stroke-width="3"/>
+
+  <!-- Inner Bold Circle -->
+  <circle cx="135" cy="175" r="55" fill="none" stroke="white" stroke-width="4"/>
+
+  <!-- Book Icon (Bold) -->
+  <rect x="110" y="155" width="25" height="35" fill="white"/>
+  <rect x="135" y="155" width="25" height="35" fill="white"/>
+  <line x1="135" y1="155" x2="135" y2="190" stroke="#6f1428" stroke-width="3"/>
+
+  <!-- Crest Text -->
+  <text x="135" y="125" font-size="12" fill="white" text-anchor="middle"
+        font-family="Arial Black, Arial" font-weight="bold">
+    OLA OLUWA
+  </text>
+
+  <text x="135" y="215" font-size="10" fill="white" text-anchor="middle"
+        font-family="Arial Black, Arial" font-weight="bold">
+    MUSLIM GRAMMAR SCHOOL
+  </text>
+
+  <text x="135" y="230" font-size="10" fill="white" text-anchor="middle"
+        font-family="Arial Black, Arial" font-weight="bold">
+    ADO-EKITI
+  </text>
+
+  <!-- Main Title (Extra Bold) -->
+  <text x="570" y="150" font-size="56" text-anchor="middle"
+        fill="#a61c1c"
+        font-family="Impact, Arial Black, sans-serif"
+        font-weight="900"
+        letter-spacing="2">
+    OLA - OLUWA
+  </text>
+
+  <text x="570" y="230" font-size="50" text-anchor="middle"
+        fill="#a61c1c"
+        font-family="Impact, Arial Black, sans-serif"
+        font-weight="900"
+        letter-spacing="2">
+    MUSLIM GRAMMAR
+  </text>
+
+  <text x="570" y="300" font-size="50" text-anchor="middle"
+        fill="#a61c1c"
+        font-family="Impact, Arial Black, sans-serif"
+        font-weight="900"
+        letter-spacing="2">
+    SCHOOL
+  </text>
+
+  <text x="570" y="370" font-size="48" text-anchor="middle"
+        fill="#a61c1c"
+        font-family="Impact, Arial Black, sans-serif"
+        font-weight="900"
+        letter-spacing="3">
+    ADO-EKITI
+  </text>
+
+  <!-- Bottom Text (Very Bold & Spaced) -->
+  <text x="570" y="460" font-size="48" text-anchor="middle"
+        fill="#111"
+        font-family="Impact, Arial Black, sans-serif"
+        font-weight="900"
+        letter-spacing="6">
+    FOUNDED IN 1970
+  </text>
+
+</svg>

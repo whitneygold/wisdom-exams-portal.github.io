@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>JSS1 Dashboard | Olaoluwa Muslim Grammar School</title>
+    <link rel="icon" type="image/x-icon" href="fav_icon2.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: url('img/school-bg.png') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Dark red overlay for classic tone */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(100, 20, 20, 0.85); /* deep red overlay */
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Top bar – white with red accents */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 10px 25px;
+            border-radius: 60px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-left: 6px solid #8B0000;
+            border-right: 2px solid #8B0000;
+        }
+
+        .student-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .student-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #8B0000;
+        }
+
+        .student-info span {
+            font-weight: bold;
+            color: #8B0000;
+        }
+
+        .logout-top {
+            background: #8B0000;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .logout-top:hover {
+            background: #a52a2a;
+            transform: scale(1.02);
+        }
+
+        /* School header – red & gold classic */
+        .school-header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(3px);
+            padding: 15px 10px;
+            border-radius: 50px;
+            border: 1px solid #c0392b;
+        }
+
+        .school-header img {
+            width: 80px;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 0 0 2px #8B0000;
+        }
+
+        h1 {
+            color: #fff3e0;
+            margin-top: 10px;
+            font-size: 1.9rem;
+            text-shadow: 2px 2px 0 #5a1e1e;
+            letter-spacing: 1px;
+        }
+
+        .school-name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffd966;
+            text-shadow: 1px 1px 0 #8B0000;
+            margin: 8px 0 4px;
+        }
+
+        .motto {
+            font-style: italic;
+            font-size: 1rem;
+            color: #ffcccc;
+            background: rgba(139, 0, 0, 0.6);
+            display: inline-block;
+            padding: 5px 18px;
+            border-radius: 40px;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Welcome card */
+        .welcome-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+            border-top: 5px solid #8B0000;
+            border-bottom: 2px solid #8B0000;
+        }
+
+        /* Subject grid */
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 25px;
+        }
+
+        .subject-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            border-left: 6px solid #8B0000;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 28px rgba(0, 0, 0, 0.2);
+        }
+
+        .subject-title {
+            font-size: 1.45rem;
+            font-weight: bold;
+            color: #8B0000;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #c0392b;
+            display: inline-block;
+            padding-right: 8px;
+        }
+
+        .status-badge {
+            font-size: 0.7rem;
+            background: #e9ecef;
+            padding: 4px 12px;
+            border-radius: 30px;
+            margin-left: 12px;
+            vertical-align: middle;
+            font-weight: 600;
+        }
+
+        .status-badge.completed {
+            background: #8B0000;
+            color: white;
+        }
+
+        .status-badge.available {
+            background: #2c6e2c;
+            color: white;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 12px;
+            margin: 18px 0 15px;
+            border: 1px solid #cd5c5c;
+            border-radius: 50px;
+            font-family: inherit;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .password-input:focus {
+            border-color: #8B0000;
+            box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.2);
+        }
+
+        .exam-btn {
+            background: #8B0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .exam-btn:hover:not(:disabled) {
+            background: #a52a2a;
+            transform: scale(0.98);
+        }
+
+        .exam-btn:disabled {
+            background: #b0a0a0;
+            cursor: not-allowed;
+        }
+
+        .logout-bottom {
+            background: #8B0000;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 40px;
+            border: none;
+            cursor: pointer;
+            margin-top: 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .logout-bottom:hover {
+            background: #631111;
+        }
+
+        footer {
+            text-align: center;
+            color: #ffdede;
+            margin-top: 45px;
+            font-size: 0.8rem;
+            border-top: 1px solid #b54545;
+            padding-top: 18px;
+        }
+
+        @media (max-width: 700px) {
+            .subject-grid {
+                grid-template-columns: 1fr;
+            }
+            .top-bar {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+            .school-name {
+                font-size: 1.2rem;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="top-bar">
+        <div class="student-info">
+            <img id="studentAvatar" src="img/default.jpg" alt="Student Photo">
+            <span id="studentDisplayName"></span>
+        </div>
+        <button class="logout-top" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+
+    <div class="school-header">
+        <img src="img/school-logo.png" alt="School Logo">
+        <div class="school-name">OLAOLUWA MUSLIM GRAMMAR SCHOOL, ADO EKITI</div>
+        <div class="motto"><i class="fas fa-book-open"></i> Knowledge is the beginning of fortune</div>
+        <h1>📘 JSS1 EXAMINATION DASHBOARD</h1>
+    </div>
+
+    <div class="welcome-card">
+        <p>Welcome, <strong id="studentName">Student</strong>! Select any subject below, enter the correct password, and begin your exam. <strong>Note:</strong> Once you submit an exam, you cannot retake it. <i class="fas fa-check-circle" style="color:#8B0000;"></i></p>
+    </div>
+
+    <div class="subject-grid" id="subjectsContainer"></div>
+
+    <div style="text-align: center;">
+        <button class="logout-bottom" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout & Exit</button>
+    </div>
+    <footer>© 2025 Olaoluwa Muslim Grammar School, Ado Ekiti — Knowledge is the beginning of fortune</footer>
+</div>
+
+<script>
+    const studentUsername = localStorage.getItem('studentUsername') || 'Student';
+    const studentClass = 'jss1';   // Junior class
+    const studentImage = localStorage.getItem('studentImage') || 'default.jpg';
+
+    document.getElementById('studentName').innerText = studentUsername;
+    document.getElementById('studentDisplayName').innerText = studentUsername;
+    const avatarImg = document.getElementById('studentAvatar');
+    avatarImg.src = `img/${studentImage}`;
+    avatarImg.onerror = function() { this.src = 'img/default.jpg'; };
+
+    // ======================= JSS1 SUBJECT PASSWORDS (unchanged) =======================
+    const classSubjectPasswords = {
+        jss1: {
+            intermediate_science: "int101",
+            music: "mus101",
+            mathematics: "mat101",
+            french: "fre101",
+            agric_science: "agr101",
+            livestock_farming: "liv101",
+            cultural_art: "art101",
+            history: "his101",
+            basic_science: "bas101",
+            basic_technology: "tec101",
+            yoruba: "yor101",
+            civic_education: "civ101",
+            citizenship_studies: "cit101",
+            fine_art: "fin101",
+            phe: "phe101",
+            crs: "crs101",
+            social_studies: "soc101",
+            business_studies: "bus101",
+            digital_technology: "dig101"
+        }
+    };
+
+    function formatSubjectKey(subjectName) {
+        return subjectName.toLowerCase().replace(/\s+/g, '_');
+    }
+
+    function getExamAttempts(cls) {
+        const key = `${cls}_exam_attempts`;
+        const stored = localStorage.getItem(key);
+        return stored ? JSON.parse(stored) : {};
+    }
+
+    function saveExamAttempts(cls, data) {
+        const key = `${cls}_exam_attempts`;
+        localStorage.setItem(key, JSON.stringify(data));
+    }
+
+    function hasCompletedExam(cls, sub, username) {
+        const attempts = getExamAttempts(cls);
+        return attempts[username] && attempts[username][sub] === true;
+    }
+
+    function markExamCompleted(cls, sub, username) {
+        const attempts = getExamAttempts(cls);
+        if (!attempts[username]) {
+            attempts[username] = {};
+        }
+        attempts[username][sub] = true;
+        saveExamAttempts(cls, attempts);
+    }
+
+    // Subject list (same as original)
+    const subjects = [
+        { name: "Intermediate Science", key: "intermediate_science" },
+        { name: "Music", key: "music" },
+        { name: "Mathematics", key: "mathematics" },
+        { name: "French", key: "french" },
+        { name: "Agric Science", key: "agric_science" },
+        { name: "Livestock Farming", key: "livestock_farming" },
+        { name: "Cultural Art", key: "cultural_art" },
+        { name: "History", key: "history" },
+        { name: "Basic Science", key: "basic_science" },
+        { name: "Basic Technology", key: "basic_technology" },
+        { name: "Yoruba", key: "yoruba" },
+        { name: "Civic Education", key: "civic_education" },
+        { name: "Citizenship Studies", key: "citizenship_studies" },
+        { name: "Fine Art", key: "fine_art" },
+        { name: "PHE", key: "phe" },
+        { name: "CRS", key: "crs" },
+        { name: "Social Studies", key: "social_studies" },
+        { name: "Business Studies", key: "business_studies" },
+        { name: "Digital Technology", key: "digital_technology" }
+    ];
+
+    const container = document.getElementById('subjectsContainer');
+    
+    subjects.forEach(subject => {
+        const subjectKey = subject.key;
+        const subjectDisplay = subject.name;
+        const completed = hasCompletedExam(studentClass, subjectKey, studentUsername);
+        
+        const card = document.createElement('div');
+        card.className = 'subject-card';
+        card.innerHTML = `
+            <div>
+                <span class="subject-title">${subjectDisplay}</span>
+                <span class="status-badge ${completed ? 'completed' : 'available'}">
+                    ${completed ? '✓ Completed' : 'Available'}
+                </span>
+            </div>
+            <input type="password" id="pass-${subjectKey}" class="password-input" placeholder="Enter ${subjectDisplay} password" ${completed ? 'disabled' : ''}>
+            <button class="exam-btn" id="btn-${subjectKey}" onclick="startExam('${subjectKey}', '${subjectDisplay}')" ${completed ? 'disabled' : ''}>
+                ${completed ? 'Exam Already Taken' : 'Take Exam'}
+            </button>
+        `;
+        container.appendChild(card);
+    });
+
+    // Start exam function (keeps exact logic, just red-themed alert style unchanged)
+    async function startExam(subjectKey, subjectDisplay) {
+        const passwordInput = document.getElementById(`pass-${subjectKey}`);
+        const enteredPassword = passwordInput.value.trim();
+        
+        const correctPassword = classSubjectPasswords[studentClass]?.[subjectKey];
+        if (!correctPassword) {
+            alert("❌ No password configured for this subject. Contact admin.");
+            return;
+        }
+        
+        if (enteredPassword !== correctPassword) {
+            alert(`❌ Incorrect password for ${subjectDisplay}. Please try again.`);
+            return;
+        }
+        
+        if (hasCompletedExam(studentClass, subjectKey, studentUsername)) {
+            alert("⚠️ You have already completed this exam. You cannot retake it.");
+            location.reload();
+            return;
+        }
+        
+        sessionStorage.setItem("class", studentClass);
+        sessionStorage.setItem("subject", subjectKey);
+        sessionStorage.setItem("subjectDisplay", subjectDisplay);
+        sessionStorage.setItem("type", "objective");
+        sessionStorage.setItem("examInfo", `${subjectDisplay} - JSS1 (SECOND TERM)`);
+        
+        localStorage.setItem("examClass", studentClass);
+        localStorage.setItem("examSubject", subjectDisplay);
+        localStorage.setItem("pendingAttempt", "true");
+        
+        const examFileName = `${studentClass}_${subjectKey}_exam.html`;
+        
+        try {
+            const response = await fetch(examFileName, { method: "HEAD" });
+            if (response.ok) {
+                alert(`✅ Access granted for ${subjectDisplay}! Redirecting to exam...`);
+                window.location.href = examFileName;
+            } else {
+                alert(`⚠️ Exam page for ${subjectDisplay} is not available yet. Please contact your teacher. Redirecting to landing page.`);
+                window.location.href = "landing.html";
+            }
+        } catch (error) {
+            console.error("Fetch error:", error);
+            alert(`⚠️ Exam page for ${subjectDisplay} is not available. Redirecting to landing page.`);
+            window.location.href = "landing.html";
+        }
+    }
+    
+    // Logout function
+    function logout() {
+        if (confirm("Are you sure you want to logout? Your exam progress will be saved.")) {
+            localStorage.removeItem('studentUsername');
+            localStorage.removeItem('studentClass');
+            localStorage.removeItem('studentImage');
+            localStorage.removeItem('loggedInUser');
+            window.location.href = 'index.html';
+        }
+    }
+    
+    // Expose functions for exam pages
+    window.markExamCompleted = function(subjectKey) {
+        markExamCompleted(studentClass, subjectKey, studentUsername);
+        const btn = document.getElementById(`btn-${subjectKey}`);
+        if (btn) {
+            btn.disabled = true;
+            btn.innerText = "Exam Already Taken";
+            const badge = btn.closest('.subject-card')?.querySelector('.status-badge');
+            if (badge) {
+                badge.className = "status-badge completed";
+                badge.innerText = "✓ Completed";
+            }
+            const pwdInput = document.getElementById(`pass-${subjectKey}`);
+            if (pwdInput) pwdInput.disabled = true;
+        }
+        alert("Exam completion recorded. You cannot retake this exam.");
+    };
+    
+    window.getCurrentSubjectKey = function() {
+        return sessionStorage.getItem("subject") || localStorage.getItem("examSubject")?.toLowerCase().replace(/\s+/g, '_');
+    };
+    
+    console.log("Olaoluwa Muslim Grammar School dashboard ready — red classic style. Student:", studentUsername);
+</script>
+</body>
+</html>

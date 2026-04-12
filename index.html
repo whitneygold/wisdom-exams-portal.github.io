@@ -2,223 +2,488 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Olaoluwa Muslim Grammar School, Ado Ekiti – Knowledge is the beginning of fortune</title>
     <link rel="icon" type="image/x-icon" href="fav_icon2.ico">
-    <title>cbt.wisdomschools.org</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            font-family: 'Jost', sans-serif;
-            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
-            background-image: url("img/computerlab1.jpg");
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fef8f5;
+            color: #2d1a1a;
+            scroll-behavior: smooth;
+            background-image: url('img/school-bg.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
             background-repeat: no-repeat;
-            background-size: cover;    
+            position: relative;
         }
-           .main{
-               width: 405px;
-               height: 450px;
-               background: red;
-               overflow: hidden;
-               background: url("") no-repeat center/ cover;
-               border-radius: 25px;
-               box-shadow: 5px 20px 50px #000;
-            }
-        #chk{
-              display: none;
-            }
-        .signup{
-                 position: relative;
-                 width:100%;
-                 height: 100%;
-                }
-        label2{
-              color: #F62217;
-              font-size: 1.5em;
-              justify-content: center;
-              display: flex;
-              margin: 40px;
-              font-weight: bold;
-              cursor: pointer;
-              transition: .5s ease-in-out;
-            }
-        label{
-               color: lime;
-               font-size: 1.5em;
-               justify-content: center;
-               display: flex;
-               margin: 30px;
-               font-weight: bold;
-               cursor: pointer;
-               transition: .5s ease-in-out;
-            }
-            input{
-                  width: 60%;
-                  height: 20px;
-                  background: #e0dede;
-                  justify-content: center;
-                  display: flex;
-                  margin: 20px auto;
-                  padding: 10px;
-                 border: none;
-                 outline: none;
-                 border-radius: 5px;
-               }
-            button{
-                    width: 60%;
-                    height: 40px;
-                    margin: 10px auto;
-                    justify-content: center;
-                    display: block;
-                    color: #fff;
-                    background: #573b8a;
-                    font-size: 1em;
-                    font-weight: bold;
-                    margin-top: 20px;
-                    outline: none;
-                    border: none;
-                    border-radius: 5px;
-                    transition: .2s ease-in;
-                    cursor: pointer;
-                }
-                button:hover{
-                    background: #6d44b8;
-                }
-                .login{
-                    height: 460px;
-                    background: #eee;
-                    border-radius: 60% / 10%;
-                    transform: translateY(-180px);
-                    transition: .8s ease-in-out;
-                }
-                .login label{
-                    color: #573b8a;
-                    transform: scale(.6);
-                }
-
-                #chk:checked ~ .login{
-                    transform: translateY(-500px);
-                }
-                #chk:checked ~ .login label{
-                    transform: scale(1);    
-                }
-                #chk:checked ~ .signup label{
-                    transform: scale(.6);
-                }
-
-        .login-container {
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 400px;
-            padding: 20px;
+        /* Overlay for readability */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 248, 240, 0.92);
+            z-index: -1;
+        }
+        /* Navbar – Red & Dark Red */
+        .navbar {
+            background: #8B0000; /* dark red */
+            color: white;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-area img {
+            height: 60px;
+            width: auto;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+        }
+        .logo-area h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .logo-area span {
+            font-size: 0.75rem;
+            display: block;
+            font-weight: 300;
+            color: #ffd9b5;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+        .nav-links li {
+            position: relative;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            display: inline-block;
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            color: #ffc285;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            top: 35px;
+            left: 0;
+            z-index: 10;
+        }
+        .dropdown-content a {
+            color: #8B0000;
+            padding: 8px 16px;
+            display: block;
+            font-size: 0.9rem;
+        }
+        .dropdown-content a:hover {
+            background: #fff0e6;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        /* Marquee Announcement */
+        .marquee-container {
+            background: #5a1e1e;
+            color: #ffefd0;
+            padding: 8px 0;
+            font-weight: bold;
+            font-size: 1rem;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-text {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            padding-left: 100%;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(90, 30, 30, 0.85), rgba(60, 20, 20, 0.85)), url('img/school-bg.png') center/cover no-repeat;
+            padding: 4rem 2rem;
             text-align: center;
+            color: white;
         }
-        .login-container h1 {
-            margin-bottom: 20px;
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 0 #3a0a0a;
         }
-        .login-container img {
-            width: 100px;
-            margin-bottom: 20px;
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
         }
-        .login-container input, .login-container button {
-            width: calc(100% - 40px);
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        .btn {
+            background: #ffc285;
+            color: #5a1e1e;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.2s;
         }
-        .login-container button {
-            background-color: #28a745;
-            color: #ffffff;
-            border: none;
-            cursor: pointer;
+        .btn:hover {
+            background: #ffb05a;
+            transform: scale(1.02);
         }
-        .login-container button:hover {
-            background-color: #218838;
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            font-size: 2rem;
+            color: #5a1e1e;
+            border-left: 6px solid #8B0000;
+            padding-left: 20px;
+            margin-bottom: 1.8rem;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 3rem;
+        }
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: 0.2s;
+            text-align: center;
+            border-bottom: 3px solid #8B0000;
+        }
+        .card i {
+            font-size: 2.5rem;
+            color: #8B0000;
+            margin-bottom: 1rem;
+        }
+        /* Houses – Islamic-inspired but competitive */
+        .houses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .house {
+            background: white;
+            border-radius: 20px;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            width: 150px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            font-weight: bold;
+        }
+        .red { border-top: 6px solid #e63946; }
+        .blue { border-top: 6px solid #1e88e5; }
+        .green { border-top: 6px solid #2e7d32; }
+        .yellow { border-top: 6px solid #fbc02d; }
+        .purple { border-top: 6px solid #8e44ad; }
+        .anthem-box {
+            background: #fff5ef;
+            padding: 1.8rem;
+            border-radius: 28px;
+            margin: 2rem 0;
+            text-align: center;
+            font-style: italic;
+            border-left: 5px solid #8B0000;
         }
         footer {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #777;
+            background: #3a1010;
+            color: #ffded6;
+            padding: 2rem 2rem 1rem;
+            margin-top: 3rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+        .footer-content h4 {
+            color: #ffcfb0;
+            margin-bottom: 1rem;
+        }
+        .social-icons a {
+            color: #ffcfb0;
+            margin-right: 15px;
+            font-size: 1.4rem;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            color: #ffb05a;
+        }
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #6a2e2e;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+        }
+        @media (max-width: 800px) {
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
         }
     </style>
-
-<script>
-        // Validate form fields
-        function validateForm() {
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-           
-            if (!username || !password) {
-                alert("Please fill in both username and password.");
-                return false;
-            }
-            return true;
-        }
-     localStorage.setItem('username', enteredUsername);
-     function handleSubmit() {
-        if(validateForm()){
-            storeUsername();
-            return true;
-        }
-        return false;
-    }
-    </script>
 </head>
+<body oncontextmenu="return false;">
 
-<body oncontextmenu="return false">
-
-                                      <div class="container-xxxl  center ">
-                        <div><img src="img\templogo1.jpg"  style="margin-bottom:15px; width: 400px; height: 120px" class="mx-auto d-block "></div>
-                        <div class="" role="alert">
-                        
-                         </div>
-    <div class="main">      
-        <input type="checkbox" id="chk" aria-hidden="true">
-                        
-            <div class="signup">
-                <div>
-                   
-                </div>
-    
-                                  
-                                          <label for="chk" aria-hidden="true"> CBT PORTAL </label>
-<input type="text" id="username" placeholder="Username"><br><br>
-<input type="password" id="password" placeholder="Password"><br><br>
-<button onclick="login()">Login</button>
-   <label for = "chk"> WISDOM CBT PORTAL </label> 
-
-                                    
-                                       
+<!-- Marquee Announcement -->
+<div class="marquee-container">
+    <div class="marquee-text">
+        📢 OLAOLUWA MUSLIM GRAMMAR SCHOOL, ADO EKITI – KNOWLEDGE IS THE BEGINNING OF FORTUNE 📢 | ADMISSIONS FOR 2025/2026 SESSION OPEN. ENROL NOW FOR QUALITY ISLAMIC & WESTERN EDUCATION. 📢
+    </div>
 </div>
-                        
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <div class="logo-area">
+        <img src="img/school-logo.png" alt="Olaoluwa School Logo" onerror="this.src='https://placehold.co/80x80?text=OMGS'">
+        <div>
+            <h2>OLAOLUWA MUSLIM GRAMMAR<br><span>Ado Ekiti – Knowledge is the beginning of fortune</span></h2>
+        </div>
     </div>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li class="dropdown">
+            <a href="#">Resources <i class="fas fa-caret-down"></i></a>
+            <div class="dropdown-content">
+                <a href="#history">History</a>
+                <a href="#anthem">School Anthem</a>
+                <a href="#alumni">Alumni</a>
+                <a href="#islamic">Islamic Values</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="#">Activities <i class="fas fa-caret-down"></i></a>
+            <div class="dropdown-content">
+                <a href="#sports">Inter‑House Sports</a>
+                <a href="#events">Events</a>
+                <a href="#competitions">Competitions</a>
+            </div>
+        </li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="dropdown">
+            <a href="#">E‑Portal <i class="fas fa-caret-down"></i></a>
+            <div class="dropdown-content">
+                <a href="login.html">CBT EXAM PORTAL</a>
+                <a href="report_login.html">REPORT SHEET</a>
+                <a href="Teachers_login.html">TEACHERS PORTAL</a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<!-- Hero Section -->
+<section id="home">
+    <div class="hero">
+        <h1>Olaoluwa Muslim Grammar School, Ado Ekiti</h1>
+        <p><strong>“Knowledge is the beginning of fortune”</strong> – Nurturing minds with Islamic values and academic excellence since 1970.</p>
+        <p>📍 Along Ilawe Road in Ado-Ekiti, Ekiti State, Ado Ekiti, Nigeria</p>
+        <a href="#history" class="btn">Explore Our Legacy</a>
     </div>
+</section>
 
+<div class="container">
+    <section id="about">
+        <h2 class="section-title">About the School</h2>
+        <p style="margin-bottom: 1.5rem;">Olaoluwa Muslim Grammar School, Ado Ekiti, is a government‑approved secondary school founded in <strong>1970</strong> to provide quality education rooted in Islamic morals and modern academic disciplines. Located in the heart of Ado Ekiti, the school has produced scholars, professionals, and community leaders who excel with integrity. Our motto, <strong>“Knowledge is the beginning of fortune”</strong>, inspires students to seek learning as the foundation for success in this life and the hereafter.</p>
+    </section>
 
-<script>
-async function login() {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    <section id="history">
+        <h2 class="section-title">History of Olaoluwa Muslim Grammar School</h2>
+        <div style="background: #fff; border-radius: 24px; padding: 1.8rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <p>Olaoluwa Muslim Grammar School was established in <strong>1970</strong> by the Muslim community of Ado Ekiti under the leadership of Chief Imam and other notable Islamic scholars. The school began as a modest day school with a mission to combine Islamic religious instruction with a robust Western curriculum. Over the decades, it has grown into one of the most respected secondary schools in Ekiti State, known for discipline, academic success, and moral upbringing.</p>
+            <p style="margin-top: 12px;">The school’s name “Olaoluwa” (meaning “The wealth/work of God” in Yoruba) reflects the community’s dedication to raising children in the fear of Allah and service to humanity. The first set of students sat for the West African School Certificate in 1975, achieving remarkable results. Today, the school boasts modern classrooms, a well‑stocked library, science laboratories, and an ICT centre. The alumni association (OMGSOSA) actively supports infrastructure and scholarships.</p>
+            <p style="margin-top: 12px;"><em>– Adapted from school archives and oral traditions</em></p>
+        </div>
+    </section>
 
-    const response = await fetch('register.json');
-    const users = await response.json();
+    <section id="anthem">
+        <h2 class="section-title">🎵 School Anthem</h2>
+        <div class="anthem-box">
+            <p><strong>Olaoluwa, our dear school,<br>
+            Guide our steps with Allah’s rule.<br>
+            Knowledge leads to fortune bright,<br>
+            In your halls we seek the light.<br>
+            Islamic values, truth and care,<br>
+            Build our future everywhere.<br>
+            Olaoluwa, we shall stand,<br>
+            Proud and faithful in this land.</strong></p>
+            <p style="margin-top: 10px;">(Adopted 1970 – inspires excellence, piety, and service)</p>
+        </div>
+    </section>
 
-    const user = users.find(u => u.username === username && u.password === password);
+    <section id="sports">
+        <h2 class="section-title">🏆 Inter‑House Sports Competitions</h2>
+        <p>Annually, students compete in athletics, football, volleyball, and traditional games under four spirited houses, each named after Islamic virtues and founding patrons:</p>
+        <div class="houses">
+            <div class="house red"><i class="fas fa-star-and-crescent"></i> RED HOUSE<br> TAQWA (Piety)</div>
+            <div class="house blue"><i class="fas fa-water"></i> BLUE HOUSE<br> ILM (Knowledge)</div>
+            <div class="house green"><i class="fas fa-leaf"></i> GREEN HOUSE<br> ADL (Justice)</div>
+            <div class="house yellow"><i class="fas fa-sun"></i> YELLOW HOUSE<br> IHSAN (Excellence)</div>
+            <div class="house purple"><i class="fas fa-crown"></i> PURPLE HOUSE<br> SABR (Patience)</div>
+        </div>
+        <p style="text-align: center;">The annual sports fiesta (held every February) fosters unity, physical fitness, and healthy competition. The winning house receives the <strong>Olaoluwa Unity Shield</strong>.</p>
+    </section>
 
-    if (user) {
-        sessionStorage.setItem('username', user.username);
-        sessionStorage.setItem('image', user.image);
-        window.location.href = 'dashboard.html';
-    } else {
-        alert("Invalid username or password");
-    }
-}
-</script>
+    <section id="events">
+        <h2 class="section-title">📅 Upcoming Events & Competitions</h2>
+        <div class="card-grid">
+            <div class="card">
+                <i class="fas fa-chalkboard-user"></i>
+                <h3>Quranic & Academic Quiz</h3>
+                <p>Inter‑class competition – May 2026. Subjects: Islamic Studies, Mathematics, English.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-futbol"></i>
+                <h3>Inter‑House Sports Finals</h3>
+                <p>Track & Field, Football, Relay – 14th June 2026. Come cheer your house!</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-microphone-alt"></i>
+                <h3>Debate Championship</h3>
+                <p>Theme: “Role of Education in Building a Virtuous Society”. Open to all classes.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-palette"></i>
+                <h3>Creative Arts & Calligraphy</h3>
+                <p>Islamic calligraphy, drama, and art exhibition – celebrating creativity and faith.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="alumni">
+        <h2 class="section-title">👥 Old Students’ Association (Alumni)</h2>
+        <div style="background: #fff5ef; border-radius: 28px; padding: 2rem; text-align: center;">
+            <i class="fas fa-users" style="font-size: 3rem; color: #8B0000;"></i>
+            <p style="margin: 1rem 0;">The Olaoluwa Muslim Grammar School Old Students’ Association (OMGSOSA) is a vibrant global network dedicated to the school’s growth. Reunions, mentorship programmes, and infrastructure development are our pride. Join the alumni directory and stay connected with classmates.</p>
+            <a href="#" style="background: #8B0000; color: white; padding: 10px 28px; border-radius: 60px; text-decoration: none; display: inline-block;">Join Alumni Portal</a>
+        </div>
+    </section>
+
+    <section id="islamic">
+        <h2 class="section-title">🕌 Islamic Values & Education</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 25px; background: #fff; border-radius: 28px; padding: 2rem;">
+            <div style="flex:1; min-width: 200px;">
+                <i class="fas fa-quran" style="font-size: 2rem; color: #8B0000;"></i>
+                <h3>Qur’anic Recitation</h3>
+                <p>Daily Tilawah, memorisation of selected Surahs, and understanding of Tafsir.</p>
+            </div>
+            <div style="flex:1; min-width: 200px;">
+                <i class="fas fa-mosque" style="font-size: 2rem; color: #8B0000;"></i>
+                <h3>Islamic Etiquette</h3>
+                <p>Teaching of Akhlaq (character), Salah, and Islamic jurisprudence within the school.</p>
+            </div>
+            <div style="flex:1; min-width: 200px;">
+                <i class="fas fa-hand-holding-heart" style="font-size: 2rem; color: #8B0000;"></i>
+                <h3>Charity & Outreach</h3>
+                <p>Annual Zakat/Sadaqah drives and community service projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">📍 Contact & Location</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between;">
+            <div>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Along  ilawe road, Ado Ekiti, Ekiti State, Nigeria.</p>
+                <p><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> +234 813 987 6543</p>
+                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> info@olaoluwa.edu.ng</p>
+                <p><i class="fas fa-globe"></i> <strong>Website:</strong> www.olaoluwaschoolado.ng</p>
+            </div>
+            <div>
+                <iframe src="https://maps.google.com/maps?q=Ado+Ekiti+Olaoluwa+Muslim+Grammar+School&t=&z=14&ie=UTF8&iwloc=&output=embed" width="100%" height="200" style="border:0; border-radius: 16px;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div>
+            <h4>Olaoluwa Muslim Grammar School</h4>
+            <p>“Knowledge is the beginning of fortune” – Established 1970. Excellence in Islamic and Western education.</p>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <ul style="list-style: none;">
+                <li><a href="#history" style="color:#ffded6;">History</a></li>
+                <li><a href="#anthem" style="color:#ffded6;">School Anthem</a></li>
+                <li><a href="#alumni" style="color:#ffded6;">Alumni</a></li>
+                <li><a href="#sports" style="color:#ffded6;">Inter‑House Sports</a></li>
+                <li><a href="#islamic" style="color:#ffded6;">Islamic Values</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p style="margin-top: 15px;">Official Alumni Group: <strong>OMGSOSA Global</strong></p>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2026 Olaoluwa Muslim Grammar School, Ado Ekiti. Designed with <i class="fas fa-heart" style="color:#ffb05a;"></i> by the OMGSOSA Tech Team.</p>
+        <p>Powered by faith, knowledge, and excellence.</p>
+    </div>
+</footer>
+
 </body>
 </html>

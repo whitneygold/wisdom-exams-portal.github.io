@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Login | Ola oluwa muslim grammarschool Ado Ekiti</title>
+     <link rel="icon" type="image/x-icon" href="fav_icon2.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* same as before, no changes */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: url('img/school-bg.png') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            opacity: 0.7;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+        }
+        .login-card {
+            background: white;
+            max-width: 450px;
+            width: 100%;
+            border-radius: 32px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+        }
+        .logo img {
+            width: 100%;
+            height: auto;
+        }
+        h2 {
+            color: red;
+            margin-bottom: 8px;
+            font-size: 1.8rem;
+        }
+        .sub {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .input-group {
+            text-align: left;
+            margin-bottom: 1.2rem;
+        }
+        .input-group label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 6px;
+            color: #0a2f44;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #ffb347;
+            box-shadow: 0 0 0 3px rgba(255,180,71,0.2);
+        }
+        .btn {
+            background: red;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background: darkred;
+            color: red;
+        }
+        .error-msg {
+            color: #d9534f;
+            font-size: 0.85rem;
+            margin-top: 12px;
+            background: #f8d7da;
+            padding: 8px;
+            border-radius: 50px;
+            display: none;
+        }
+        footer {
+            margin-top: 1.5rem;
+            font-size: 0.75rem;
+            color: #6c757d;
+        }
+        @media (max-width: 500px) {
+            .login-card {
+                padding: 1.5rem;
+            }
+            .logo {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="login-card">
+    <div class="logo">
+        <img src="img/ola_oluwa_logo2.svg" alt="OOMGS-Logo">
+    </div>
+    <h2>OLA OLUWA CBT  EXAMS PORTAL</h2>
+    <div class="sub">Enter your username and password </div>
+
+    <form id="loginForm">
+        <div class="input-group">
+            <label><i class="fas fa-user"></i> Username </label>
+            <input type="text" id="username" placeholder="e.g. Ahmed Musa" required>
+        </div>
+        <div class="input-group">
+            <label><i class="fas fa-lock"></i> Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="btn">Login</button>
+        <div id="errorMsg" class="error-msg"></div>
+    </form>
+    <footer>Ola Oluwa Muslim Grammar School  Ado Ekiti – </footer>
+    <p style="color: red; font-size: 15px;">Knowledge is the Begining of Fortune</p>
+      <p style="color: red; font-size: 15px;">OOMGS PORTAL </p>
+    <a href="index.html">HOME</a>
+</div>
+
+<script>
+    // Array of dummy users with username, password, classPrefix, paid status, and image filename
+    const users = [
+        // JSS1 students
+        { username: "ahmed musa", password: "oomgs101", classPrefix: "oomgs1", paid: true, image: "admin.png" },
+        { username: "mary smith", password: "oomgs102", classPrefix: "oomgs1", paid: true, image: "student2.jpg" },
+        { username: "donald smith", password: "oomgs103", classPrefix: "oomgs1", paid: false, image: "student3.jpg" },
+        // JSS2
+        { username: "michael smith", password: "oomgs201", classPrefix: "oomgs2", paid: true, image: "admin.png" },
+        { username: "george smith", password: "oomgs202", classPrefix: "oomgs2", paid: false, image: "jss2_102.jpg" },
+        // JSS3
+        { username: "sandra smith", password: "oomgs301", classPrefix: "oomgs3", paid: true, image: "jss3_201.jpg" },
+        // SS1
+        { username: "julius smith", password: "oomgs401", classPrefix: "oomgs4", paid: true, image: "admin.png" },
+        // SS2
+        { username: "best smith", password: "oomgs501", classPrefix: "oomgs5", paid: false, image: "ss2_401.jpg" },
+        // SS3
+        { username: "jordan smith", password: "oomgs601", classPrefix: "oomgs6", paid: true, image: "ss3_501.jpg" }
+    ];
+
+    // Mapping class prefix to dashboard page
+    const classMap = {
+        'oomgs1': 'jss1_dashboard.html',
+        'oomgs2': 'jss2_dashboard.html',
+        'oomgs3': 'jss3_dashboard.html',
+        'oomgs4': 'ss1_dashboard.html',
+        'oomgs5': 'ss2_dashboard.html',
+        'oomgs6': 'ss3_dashboard.html'
+    };
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const errorDiv = document.getElementById('errorMsg');
+
+        if (!username || !password) {
+            errorDiv.style.display = 'block';
+            errorDiv.textContent = 'Please fill in both fields.';
+            return;
+        }
+
+        const user = users.find(u => u.username === username && u.password === password);
+        if (!user) {
+            errorDiv.style.display = 'block';
+            errorDiv.textContent = 'Invalid username or password.';
+            return;
+        }
+
+        // Check payment status
+        if (user.paid === false) {
+            localStorage.setItem('debtorUsername', username);
+            window.location.href = 'debtors.html';
+            return;
+        }
+
+        const classPrefix = user.classPrefix;
+        const dashboardPage = classMap[classPrefix];
+        if (!dashboardPage) {
+            errorDiv.style.display = 'block';
+            errorDiv.textContent = 'Invalid class prefix. Contact admin.';
+            return;
+        }
+
+        // Store full user info (including image) in localStorage
+        localStorage.setItem('studentUsername', username);
+        localStorage.setItem('studentClass', classPrefix);
+        localStorage.setItem('studentImage', user.image);   // store image filename
+        localStorage.setItem('loggedInUser', JSON.stringify(user));
+
+        window.location.href = dashboardPage;
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="100%" height="100%">
+  <!-- 
+    Refined Logo for Ola Oluwa Muslim Grammar School, Ado Ekiti
+    Colours: White background, Red (#CC0000) for text and borders
+    Shape: Outer rectangle + bottom arc for motto
+    Elements: Left crest (book), right side school name, founded 1970
+  -->
+
+  <!-- White Background -->
+  <rect width="100%" height="100%" fill="#FFFFFF" />
+
+  <!-- Outer Rectangle Border (Red) -->
+  <rect x="15" y="15" width="870" height="530" rx="12" fill="none" stroke="#CC0000" stroke-width="8" />
+
+  <!-- Inner Decorative Rectangle -->
+  <rect x="35" y="35" width="830" height="490" rx="6" fill="none" stroke="#CC0000" stroke-width="2" />
+
+  <!-- ========== LEFT CREST (Book Symbol) ========== -->
+  <!-- Crest Background -->
+  <rect x="60" y="100" width="160" height="170" rx="8" fill="#CC0000" />
+
+  <!-- Crest Circle -->
+  <circle cx="140" cy="175" r="55" fill="none" stroke="#FFFFFF" stroke-width="3" />
+
+  <!-- Open Book Symbol -->
+  <rect x="110" y="155" width="25" height="35" fill="#FFFFFF" rx="2" />
+  <rect x="145" y="155" width="25" height="35" fill="#FFFFFF" rx="2" />
+  <line x1="140" y1="155" x2="140" y2="190" stroke="#CC0000" stroke-width="2" />
+
+  <!-- Text inside crest -->
+  <text x="140" y="130" font-size="12" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-weight="bold">OLA OLUWA</text>
+  <text x="140" y="235" font-size="11" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif">ADO-EKITI</text>
+
+  <!-- ========== RIGHT SIDE SCHOOL NAME ========== -->
+  <text x="530" y="170" font-size="52" text-anchor="middle" fill="#CC0000" font-family="'Arial Black', Arial, sans-serif" font-weight="bold" letter-spacing="2">
+    OLA - OLUWA
+  </text>
+  <text x="530" y="240" font-size="48" text-anchor="middle" fill="#CC0000" font-family="'Arial Black', Arial, sans-serif" font-weight="bold" letter-spacing="1">
+    MUSLIM GRAMMAR
+  </text>
+  <text x="530" y="300" font-size="48" text-anchor="middle" fill="#CC0000" font-family="'Arial Black', Arial, sans-serif" font-weight="bold">
+    SCHOOL
+  </text>
+  <text x="530" y="360" font-size="46" text-anchor="middle" fill="#CC0000" font-family="'Arial Black', Arial, sans-serif" font-weight="bold">
+    ADO - EKITI
+  </text>
+
+  <!-- ========== FOUNDED YEAR ========== -->
+  <text x="530" y="440" font-size="40" text-anchor="middle" fill="#CC0000" font-family="'Arial Black', Arial, sans-serif" font-weight="bold" letter-spacing="4">
+    ESTD 1970
+  </text>
+
+  <!-- ========== BOTTOM ARC WITH MOTTO ========== -->
+  <!-- Arc path -->
+  <path id="mottoArc" d="M 60 520 Q 450 590 840 520" fill="none" stroke="#CC0000" stroke-width="4" />
+
+  <!-- Motto text along the arc -->
+  <text fill="#CC0000" font-family="Georgia, 'Times New Roman', serif" font-size="18" font-weight="bold" letter-spacing="2">
+    <textPath href="#mottoArc" startOffset="50%" text-anchor="middle">
+      KNOWLEDGE IS THE BEGINNING OF FORTUNE
+    </textPath>
+  </text>
+
+  <!-- Small decorative line above motto -->
+  <line x1="200" y1="505" x2="700" y2="505" stroke="#CC0000" stroke-width="2" />
+</svg>

@@ -1,0 +1,64 @@
+<svg width="900" height="550" viewBox="0 0 900 550" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect x="0" y="0" width="900" height="550" fill="#f2f2f2"/>
+  <rect x="10" y="10" width="880" height="530" fill="none" stroke="#5a7fb5" stroke-width="8"/>
+
+  <!-- Crest Shield -->
+  <path d="M60,100 
+           L200,100 
+           L200,220 
+           Q130,270 60,220 Z"
+        fill="#7a1c2f" stroke="white" stroke-width="2"/>
+
+  <!-- Inner Circle -->
+  <circle cx="130" cy="170" r="45" fill="none" stroke="white" stroke-width="2"/>
+
+  <!-- Book Icon -->
+  <rect x="105" y="155" width="20" height="25" fill="white"/>
+  <rect x="125" y="155" width="20" height="25" fill="white"/>
+  <line x1="125" y1="155" x2="125" y2="180" stroke="#7a1c2f" stroke-width="1.5"/>
+
+  <!-- Crest Text (Top & Bottom) -->
+  <text x="130" y="125" font-size="10" fill="white" text-anchor="middle" font-family="Arial">
+    OLA OLUWA
+  </text>
+
+  <text x="130" y="205" font-size="9" fill="white" text-anchor="middle" font-family="Arial">
+    MUSLIM GRAMMAR SCHOOL
+  </text>
+
+  <text x="130" y="220" font-size="9" fill="white" text-anchor="middle" font-family="Arial">
+    ADO-EKITI
+  </text>
+
+  <!-- Main Text -->
+  <text x="560" y="150" font-size="52" text-anchor="middle"
+        fill="#b22222" font-family="Impact, Arial Black, sans-serif">
+    OLA - OLUWA
+  </text>
+
+  <text x="560" y="220" font-size="46" text-anchor="middle"
+        fill="#b22222" font-family="Impact, Arial Black, sans-serif">
+    MUSLIM GRAMMAR
+  </text>
+
+  <text x="560" y="280" font-size="46" text-anchor="middle"
+        fill="#b22222" font-family="Impact, Arial Black, sans-serif">
+    SCHOOL
+  </text>
+
+  <text x="560" y="340" font-size="44" text-anchor="middle"
+        fill="#b22222" font-family="Impact, Arial Black, sans-serif">
+    ADO-EKITI
+  </text>
+
+  <!-- Bottom Text -->
+  <text x="560" y="430" font-size="44" text-anchor="middle"
+        fill="#1a1a1a"
+        font-family="Impact, Arial Black, sans-serif"
+        letter-spacing="4">
+    FOUNDED IN 1970
+  </text>
+
+</svg>
